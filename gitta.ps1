@@ -1,4 +1,4 @@
-# versione 1.2 del 16/09/2020
+# versione 1.3 del 06/10/2020
 $superfolder=$args[0]
 
 if(-not($superfolder)) { 
@@ -59,6 +59,9 @@ if ($null -ne $stato) {
   if ($risposta -eq "1") {
     Write-Host "Lista files da aggiungere in stage:"
     $lista_files = git status -s
+    if ($lista_files -is [String]) {
+      $lista_files = @(lista_files)
+    }
     for($a=0; $a -lt $lista_files.Count; $a++) {
       Write-Output "$a : $($lista_files[$a])"
     }
