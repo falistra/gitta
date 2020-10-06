@@ -60,7 +60,7 @@ if ($null -ne $stato) {
     Write-Host "Lista files da aggiungere in stage:"
     $lista_files = git status -s
     if ($lista_files -is [String]) {
-      $lista_files = @(lista_files)
+      $lista_files = @($lista_files)
     }
     for($a=0; $a -lt $lista_files.Count; $a++) {
       Write-Output "$a : $($lista_files[$a])"
