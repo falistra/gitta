@@ -103,6 +103,9 @@ Set-Location "\\mdnprod.manord.com$($path)"
 git pull origin developer
 git push origin production 
 
+Set-Location "\\mdnsvil.manord.com$($path)"
+git fetch --all
+
 $tempo_impiegato=[Math]::Abs((New-TimeSpan -End ($inizio)).Seconds)
 Write-Output "Tempo impiegato: $tempo_impiegato secondi"
 C:
