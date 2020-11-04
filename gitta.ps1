@@ -108,4 +108,6 @@ git fetch --all
 
 $tempo_impiegato=[Math]::Abs((New-TimeSpan -End ($inizio)).Seconds)
 Write-Output "Tempo impiegato: $tempo_impiegato secondi"
+Write-Output "====================== FINE =========================="
+Write-Output "====================== FINE =========================="
 C:
