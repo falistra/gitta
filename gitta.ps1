@@ -41,6 +41,8 @@ if (-not(Test-Path $pathCompleto -PathType Container)) {
 $env:GIT_SSH="C:\Program Files\PuTTY\plink.exe"
 
 Set-Location "\\mdnsvil.manord.com$($path)"
+Write-Output "============ Posizionato su mdnsvil ================="
+
 $stato = $null;
 $stato = git status -s
 if ($null -ne $stato) {
@@ -98,12 +100,17 @@ if ($null -ne $stato) {
 
 $inizio=(GET-DATE)
 git push origin developer
+Write-Output "====== Fatta la push su developer ===================="
 
+Write-Output "============ Posizionato su mdnprod ================="
 Set-Location "\\mdnprod.manord.com$($path)"
 git pull origin developer
+Write-Output "====== Fatta la pull da developer ===================="
 git push origin production 
+Write-Output "====== Fatta la push su production ==================="
 
 Set-Location "\\mdnsvil.manord.com$($path)"
+Write-Output "============ (Ri)Posizionato su mdnsvil =============="
 git fetch --all
 
 $tempo_impiegato=[Math]::Abs((New-TimeSpan -End ($inizio)).Seconds)
