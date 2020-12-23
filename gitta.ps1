@@ -1,4 +1,5 @@
-# versione 1.3 del 06/10/2020
+# versione 1.2 del 23/12/2020
+Write-Output "========== gitta.ps1 versione 2.0 ===========" 
 $superfolder=$args[0]
 
 if(-not($superfolder)) { 
@@ -9,7 +10,7 @@ if(-not($superfolder)) {
 
 if($superfolder -notin "make", "cgi", "batch") { 
   Write-Output 'Parametro diverso da make o cgi o batch'
-  Write-Output "Uso: \gitta.ps1 <make|cgi|batch> <cartella>" 
+  Write-Output "Uso: \gitta.ps1 <make|cgi|batch> <cartella>"
   exit
 }
 
