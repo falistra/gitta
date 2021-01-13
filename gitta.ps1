@@ -1,23 +1,23 @@
 # versione 1.2 del 23/12/2020
-Write-Output "========== gitta.ps1 versione 2.0 ===========" 
+Write-Output "========== gitta.ps1 versione 2.1 ===========" 
 $superfolder=$args[0]
 
 if(-not($superfolder)) { 
   Write-Output "Parametro (make|cgi|batch) non specificato"
-  Write-Output "Uso: \gitta.ps1 <make|cgi|batch> <cartella>" 
+  Write-Output "Uso: \gitta.ps1 <make|cgi|batch|demoni> <cartella>" 
   exit
   }
 
-if($superfolder -notin "make", "cgi", "batch") { 
-  Write-Output 'Parametro diverso da make o cgi o batch'
-  Write-Output "Uso: \gitta.ps1 <make|cgi|batch> <cartella>"
+if($superfolder -notin "make", "cgi", "batch", "demoni") { 
+  Write-Output 'Parametro diverso da make o cgi o batch o demoni'
+  Write-Output "Uso: \gitta.ps1 <make|cgi|batch|demoni> <cartella>"
   exit
 }
 
 $folder=$args[1]
 if(-not($folder)) { 
   Write-Output "Parametro 'cartella' non specificato" 
-  Write-Output "Uso: \gitta.ps1 <make|cgi|batch> <cartella>" 
+  Write-Output "Uso: \gitta.ps1 <make|cgi|batch|demoni> <cartella>" 
   exit
 }
 
@@ -29,6 +29,9 @@ if ($superfolder -eq "cgi") {
 }
 if ($superfolder -eq "batch") {
   $path="\discoe Script\shell\batch\$($folder)"
+}
+if ($superfolder -eq "demoni") {
+  $path="\discoe Script\shell\batch\Demoni"
 }
 
 
@@ -56,6 +59,12 @@ if ($null -ne $stato) {
   if ($risposta -eq "3") {
     Write-Host "Script interrotto"
     c:
+    exit
+  }
+
+  if($risposta -notin "1", "2", "3") { 
+    Write-Output 'Scelta diversa da 1,2,3. Rieseguire gitta'
+    C:
     exit
   }
 
