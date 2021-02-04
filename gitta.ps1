@@ -1,5 +1,5 @@
 # versione 1.2 del 23/12/2020
-Write-Output "========== gitta.ps1 versione 2.1 ===========" 
+Write-Output "========== gitta.ps1 versione 2.2 ===========" 
 $superfolder=$args[0]
 
 if(-not($superfolder)) { 
@@ -46,6 +46,10 @@ $env:GIT_SSH="C:\Program Files\PuTTY\plink.exe"
 
 Set-Location "\\mdnsvil.manord.com$($path)"
 Write-Output "============ Posizionato su mdnsvil ================="
+Write-Output "\\mdnsvil.manord.com$($path)"
+
+$urlRemote = git remote get-url
+Write-Output "Url repository remote: $($urlRemote)"
 
 $stato = $null;
 $stato = git status -s
